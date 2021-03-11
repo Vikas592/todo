@@ -28,7 +28,6 @@ function Item({ todo }) {
         dispatch(editItem(
             todo.id, event.target.value
         ))
-        // setTodos((prevTodos) => [...prevTodos.filter(todoItem => todoItem.id !== todo.id), newTodo]);
         todo = newTodo
     }
     return (
