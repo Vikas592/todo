@@ -1,24 +1,27 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import Input from './Components/Input';
+import Item from './Components/Item'
 
 function App() {
+  const [todos, setTodos] = useState([{
+    id: Date(),
+    item: "task1"
+  }, {
+    id: Date() + 1,
+    item: "task2"
+  }])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Input setTodos={setTodos} />
+      <ul className="item-container">
+        {todos.map((todo) =>
+          <li key={todo.id} ><Item todo={todo} setTodos={setTodos} /></li>
+        )}
+      </ul>
     </div>
+
   );
 }
 
