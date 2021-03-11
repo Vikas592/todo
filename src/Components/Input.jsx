@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { add } from '../Redux/actions'
 import './Input.css'
 
-function Input({ setTodos }) {
+function Input() {
 
+    const dispatch = useDispatch();
     const [newItem, setNewItem] = useState("")
     const handleChange = (event) => {
         setNewItem(event.target.value)
@@ -10,10 +13,11 @@ function Input({ setTodos }) {
     const handleSubmit = (event) => {
         event.preventDefault();
         if (newItem !== "") {
-            setTodos((prevTodos) => [...prevTodos, {
+            dispatch(add({
                 id: Date(),
-                item: newItem
-            }]);
+                item: newItem,
+                status: "pending"
+            }));
             setNewItem("")
         }
     }
