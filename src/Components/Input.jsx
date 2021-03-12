@@ -16,7 +16,7 @@ function Input() {
             dispatch(add({
                 id: Date(),
                 item: newItem,
-                status: "pending"
+                isComplete: false
             }));
             setNewItem("")
         }
