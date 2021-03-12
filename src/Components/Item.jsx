@@ -19,7 +19,10 @@ function Item({ todo, setTodos }) {
 
     const handleChange = (event) => {
         const newTodo = { id: todo.id, item: event.target.value };
-        setTodos((prevTodos) => [...prevTodos.filter(todoItem => todoItem.id !== todo.id), newTodo]);
+        setTodos((prevTodos) => [...prevTodos.map(todoItem => {
+            if (todoItem.id === todo.id) todoItem.item = event.target.value;
+            return todoItem
+        })]);
         todo = newTodo
     }
     return (
