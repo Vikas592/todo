@@ -4,7 +4,7 @@ const initialState = [
     {
         id: Date(),
         item: "Task 1",
-        status: "pending"
+        isComplete: false
     }];
 
 export const reducer = (state = initialState, action = {}) => {
@@ -19,7 +19,10 @@ export const reducer = (state = initialState, action = {}) => {
             })
             ];
         case UPDATE_STATUS:
-            return [...state.filter(todo => todo.id !== action.payload.id), { id: action.payload.id, item: action.payload.item, status: action.payload.status }]
+            return [...state.map(todo => {
+                if (todo.id === action.payload.id) todo.isComplete = !todo.isComplete
+                return todo;
+            })];
         default:
             return state
     }

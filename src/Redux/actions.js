@@ -10,7 +10,7 @@ export const editItem = (id, item) => ({
     payload: { id, item }
 })
 
-export const updateStatus = (id, item, status) => ({
+export const updateStatus = (id) => ({
     type: UPDATE_STATUS,
-    payload: { id, item, status }
+    payload: { id }
 })
