@@ -9,15 +9,10 @@ function Item({ todo }) {
     const [edit, setEdit] = useState(false)
 
     const handleDelete = () => {
-        if (todo.status !== "pending") {
-            dispatch(
-                updateStatus(todo.id, todo.item, "pending")
-            )
+        if (todo.isComplete){
             setEdit(false)
         }
-        else dispatch(
-            updateStatus(todo.id, todo.item, "completed")
-        )
+         dispatch(updateStatus(todo.id))
     }
     const handleEdit = () => {
         setEdit(!edit)
@@ -34,7 +29,7 @@ function Item({ todo }) {
         <div className="todoItem">
             <div className="todo-text" >
                 <i className="fas fa-notes-medical" style={{ color: "#4285F4" }}></i>
-                {todo.status !== "pending" ?
+                {todo.isComplete ?
                     <p style={{ textDecoration: "line-through" }}>{todo.item}</p>
                     :
                     edit
@@ -48,8 +43,8 @@ function Item({ todo }) {
                 }
             </div>
 
-            <button className="buttons" disabled={todo.status !== "pending"} onClick={handleEdit}>{edit ? <i className="fas fa-check"></i> : <i className="fas fa-pencil-alt"></i>}</button>
-            <button className="buttons" onClick={handleDelete} >{todo.status !== "pending" ? <i className="fas fa-undo"></i> : <i className="fas fa-trash-alt"></i>}</button>
+            <button className="buttons" disabled={todo.isComplete} onClick={handleEdit}>{edit ? <i className="fas fa-check"></i> : <i className="fas fa-pencil-alt"></i>}</button>
+            <button className="buttons" onClick={handleDelete} >{todo.isComplete ? <i className="fas fa-undo"></i> : <i className="fas fa-trash-alt"></i>}</button>
         </div>
     )
 }
