@@ -9,10 +9,10 @@ function Item({ todo }) {
     const [edit, setEdit] = useState(false)
 
     const handleDelete = () => {
-        if (todo.isComplete){
+        if (todo.isComplete) {
             setEdit(false)
         }
-         dispatch(updateStatus(todo.id))
+        dispatch(updateStatus(todo.id))
     }
     const handleEdit = () => {
         setEdit(!edit)
@@ -43,7 +43,7 @@ function Item({ todo }) {
                 }
             </div>
 
-            <button className="buttons" disabled={todo.isComplete} onClick={handleEdit}>{edit ? <i className="fas fa-check"></i> : <i className="fas fa-pencil-alt"></i>}</button>
+            <button className="buttons" disabled={todo.isComplete} style={{ backgroundColor: todo.isComplete ? "grey" : "#4285f4" }} onClick={handleEdit}>{edit ? <i className="fas fa-check"></i> : <i className="fas fa-pencil-alt"></i>}</button>
             <button className="buttons" onClick={handleDelete} >{todo.isComplete ? <i className="fas fa-undo"></i> : <i className="fas fa-trash-alt"></i>}</button>
         </div>
     )
