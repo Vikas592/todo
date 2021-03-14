@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { add } from '../Redux/actions'
+import { add } from '../Redux-Toolkit/redux-toolkit'
 import './Input.css'
 
 function Input() {
-
     const dispatch = useDispatch();
     const [newItem, setNewItem] = useState("")
     const handleChange = (event) => {
@@ -14,7 +13,7 @@ function Input() {
         event.preventDefault();
         if (newItem !== "") {
             dispatch(add({
-                id: Date(),
+                id: newItem,
                 item: newItem,
                 isComplete: false
             }));
