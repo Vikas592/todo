@@ -18,3 +18,8 @@
   display: flex;
   flex: 1;
 }
+
+.todo-text > input:focus {
+  outline: none;
+  border: none;
+}

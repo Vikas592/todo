@@ -1,29 +1,28 @@
 import React, { useState } from 'react'
 import "./Item.css"
 import { useDispatch } from 'react-redux'
-import { editItem, updateStatus } from '../Redux/actions';
+import { editItem, updateStatus } from '../Redux-Toolkit/redux-toolkit';
 
 function Item({ todo }) {
 
     const dispatch = useDispatch();
-    const [edit, setEdit] = useState(false)
-
+    const [edit, setEdit] = useState(false);
     const handleDelete = () => {
         if (todo.isComplete) {
-            setEdit(false)
+            setEdit(false);
         }
-        dispatch(updateStatus(todo.id))
+        dispatch(updateStatus({ id: todo.id }))
     }
     const handleEdit = () => {
-        setEdit(!edit)
+        setEdit(!edit);
     }
 
     const handleChange = (event) => {
-        const newTodo = { id: todo.id, item: event.target.value };
         dispatch(editItem(
-            todo.id, event.target.value
+            { id: todo.id, item: event.target.value }
         ))
-        todo = newTodo
+        setEdit(true)
+
     }
     return (
         <div className="todoItem">

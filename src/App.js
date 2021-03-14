@@ -15,7 +15,7 @@ function App() {
       <h5>My Todos</h5>
       <ul className="item-container">
         {todos.map(todo =>
-          <li key={todo.id} ><Item todo={todo} /></li>
+          <li key={todo.id + todo.item} ><Item todo={todo} /></li>
         )}
       </ul>
     </div>
