@@ -6,11 +6,15 @@ import Item from './Components/Item'
 function App() {
   const [todos, setTodos] = useState([{
     id: Date(),
-    item: "task1"
+    item: "task1",
+    isComplete: false
   }, {
     id: Date() + 1,
-    item: "task2"
+    item: "task2",
+    isComplete: false
   }])
+
+
 
   return (
     <div className="App">
