@@ -15,7 +15,8 @@ function Input() {
             dispatch(add({
                 id: newItem,
                 item: newItem,
-                isComplete: false
+                isComplete: false,
+                editting: false
             }));
             setNewItem("")
         }
