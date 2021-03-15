@@ -1,4 +1,4 @@
-##Create a ToDo app
+## Create a ToDo app
 ---
 1. At the top, there are two components textField(TF1) to accept a string and a button(B1) associated with that to add the string in bullet points.
 2. When the user enters any text in the textField(TF1) and hits the button(B1) the string should be added in bullet points below the textField(TF1).
