@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <<<<<<< d69170cf2a3620c41949a83360897b7a8e057ae9
 ## Create a ToDo app
 ---
@@ -13,6 +14,8 @@ You need to do the above task using.
 2. React + Redux
 3. React + Redux tool kit
 =======
+=======
+>>>>>>> b5626d5575ee0472ff624b11fefe02e551dc8576
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -83,4 +86,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<<<<<<< HEAD
 >>>>>>> Initialize project using Create React App
+=======
+>>>>>>> b5626d5575ee0472ff624b11fefe02e551dc8576
