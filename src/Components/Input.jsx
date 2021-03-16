@@ -14,10 +14,9 @@ function Input() {
         event.preventDefault();
         if (newItem !== "") {
             dispatch(add({
-                id: newItem,
+                id: Date() + newItem,
                 item: newItem,
                 isComplete: false,
-                editting: false
             }));
             setNewItem("")
         }

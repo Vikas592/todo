@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import "./Item.css"
 import { useDispatch } from 'react-redux'
-import { editItem, updateStatus, editting } from '../Redux-Toolkit/redux-toolkit';
+import { editItem, updateStatus } from '../Redux-Toolkit/redux-toolkit';
 
 function Item({ todo }) {
+    const [edit, setEdit] = useState(false);
+
     const [item, setItem] = useState(todo.item);
     const dispatch = useDispatch();
 
@@ -11,7 +13,7 @@ function Item({ todo }) {
         dispatch(updateStatus({ id: todo.id }))
     }
     const handleEdit = () => {
-        dispatch(editting({ id: todo.id }))
+        setEdit(!edit)
         if (item) {
             dispatch(editItem(
                 { id: todo.id, item }
@@ -35,7 +37,7 @@ function Item({ todo }) {
                 }
                 {!todo.isComplete
                     &&
-                    todo.editting
+                    edit
                     &&
                     <input value={item}
                         onChange={handleChange}
@@ -44,7 +46,8 @@ function Item({ todo }) {
 
                 {!todo.isComplete
                     &&
-                    !todo.editting
+
+                    !edit
                     &&
                     <p  >{todo.item}</p>
                 }
@@ -56,7 +59,7 @@ function Item({ todo }) {
                 disabled={todo.isComplete}
                 style={{ backgroundColor: todo.isComplete ? "grey" : "#4285f4" }}
                 onClick={handleEdit}>
-                {todo.editting && !todo.isComplete
+                {edit && !todo.isComplete
                     ?
                     <i className="fas fa-check"></i>
                     :
