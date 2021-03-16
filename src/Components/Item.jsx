@@ -10,6 +10,7 @@ function Item({ todo }) {
     const dispatch = useDispatch();
 
     const handleDelete = () => {
+        if (todo.isComplete) { setEdit(false) }
         dispatch(updateStatus({ id: todo.id }))
     }
     const handleEdit = () => {
