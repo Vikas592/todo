@@ -22,6 +22,7 @@ function Item({ todo }) {
                 todo.id, item
             ))
         }
+        else setItem(todo.item)
     }
 
     const handleChange = (event) => {
@@ -32,18 +33,18 @@ function Item({ todo }) {
         <div className="todoItem">
             <div className="todo-text" >
                 <i className="fas fa-notes-medical" style={{ color: "#4285F4" }}></i>
-                {todo.isComplete ?
+                {todo.isComplete &&
                     <p style={{ textDecoration: "line-through" }}>{todo.item}</p>
-                    :
-                    edit
-                        ?
-                        <input value={item}
-                            onChange={handleChange}
-                            autoFocus={true}
+                }
+                {!todo.isComplete && edit
+                    &&
+                    <input value={item}
+                        onChange={handleChange}
+                        autoFocus={true}
 
-                        />
-                        :
-                        <p  >{todo.item}</p>
+                    />}
+                {!todo.isComplete && !edit &&
+                    <p  >{todo.item}</p>
                 }
             </div>
 
