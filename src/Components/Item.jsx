@@ -27,7 +27,8 @@ function Item({ todo }) {
     return (
         <div className="todoItem">
             <div className="todo-text" >
-                <i className="fas fa-notes-medical" style={{ color: "#4285F4" }}></i>
+                {todo.isComplete ? <i className="fas fa-check" style={{ color: "#4285F4" }}></i> :
+                    <i className="fas fa-notes-medical" style={{ color: "#4285F4" }}></i>}
                 {todo.isComplete
                     &&
                     <p style={{ textDecoration: "line-through" }}>{todo.item}</p>
