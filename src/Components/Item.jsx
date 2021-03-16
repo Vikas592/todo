@@ -4,19 +4,22 @@ import { useDispatch } from 'react-redux'
 import { editItem, updateStatus, editting } from '../Redux-Toolkit/redux-toolkit';
 
 function Item({ todo }) {
-
+    const [item, setItem] = useState(todo.item);
     const dispatch = useDispatch();
     const handleDelete = () => {
         dispatch(updateStatus({ id: todo.id }))
     }
     const handleEdit = () => {
         dispatch(editting({ id: todo.id }))
+        if (item) {
+            dispatch(editItem(
+                { id: todo.id, item }
+            ))
+        }
     }
 
     const handleChange = (event) => {
-        dispatch(editItem(
-            { id: todo.id, item: event.target.value }
-        ))
+        setItem(event.target.value);
 
     }
     return (
@@ -28,7 +31,7 @@ function Item({ todo }) {
                     :
                     todo.editting
                         ?
-                        <input value={todo.item}
+                        <input value={item}
                             onChange={handleChange}
                             autoFocus={true}
                         />
