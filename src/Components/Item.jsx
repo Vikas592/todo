@@ -59,10 +59,11 @@ function Item({ todo }) {
                 disabled={todo.isComplete}
                 style={{ backgroundColor: todo.isComplete ? "grey" : "#4285f4" }}
                 onClick={handleEdit}>
-                {edit
+                {edit && !todo.isComplete
                     ?
                     <i className="fas fa-check"></i>
                     :
+
                     <i className="fas fa-pencil-alt"></i>
                 }
             </button>
