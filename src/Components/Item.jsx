@@ -7,6 +7,7 @@ function Item({ todo }) {
 
     const dispatch = useDispatch();
     const [edit, setEdit] = useState(false)
+    const [item, setItem] = useState(todo.item)
 
     const handleDelete = () => {
         if (todo.isComplete) {
@@ -16,14 +17,16 @@ function Item({ todo }) {
     }
     const handleEdit = () => {
         setEdit(!edit)
+        if (item) {
+            dispatch(editItem(
+                todo.id, item
+            ))
+        }
     }
 
     const handleChange = (event) => {
-        const newTodo = { id: todo.id, item: event.target.value };
-        dispatch(editItem(
-            todo.id, event.target.value
-        ))
-        todo = newTodo
+        setItem(event.target.value)
+
     }
     return (
         <div className="todoItem">
@@ -34,9 +37,10 @@ function Item({ todo }) {
                     :
                     edit
                         ?
-                        <input value={todo.item}
+                        <input value={item}
                             onChange={handleChange}
                             autoFocus={true}
+
                         />
                         :
                         <p  >{todo.item}</p>
