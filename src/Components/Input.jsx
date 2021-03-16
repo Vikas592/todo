@@ -12,7 +12,8 @@ function Input({ setTodos }) {
         if (newItem !== "") {
             setTodos((prevTodos) => [...prevTodos, {
                 id: Date(),
-                item: newItem
+                item: newItem,
+                isComplete: false
             }]);
             setNewItem("")
         }

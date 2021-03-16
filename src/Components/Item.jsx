@@ -5,6 +5,7 @@ import "./Item.css"
 function Item({ todo, setTodos }) {
 
     const [edit, setEdit] = useState(false)
+    const [item, setItem] = useState(todo.item);
 
     const handleDelete = () => {
         if (!todo.isComplete) {
@@ -23,32 +24,33 @@ function Item({ todo, setTodos }) {
     }
     const handleEdit = () => {
         setEdit(!edit)
+        if (item) {
+            setTodos((prevTodos) => [...prevTodos.map(todoItem => {
+                if (todoItem.id === todo.id) todoItem.item = item;
+                return todoItem
+            })]);
+        }
+        else setItem(todo.item);
+
     }
 
     const handleChange = (event) => {
-        setTodos((prevTodos) => [...prevTodos.map(todoItem => {
-            if (todoItem.id === todo.id) todoItem.item = event.target.value;
-            return todoItem
-        })]);
-
-        console.log(todo)
+        setItem(event.target.value);
     }
     return (
         <div className="todoItem">
             <div className="todo-text" >
                 <i className="fas fa-notes-medical" style={{ color: "#4285F4" }}></i>
-                {todo.isComplete ?
-                    <p style={{ textDecoration: "line-through" }}>{todo.item}</p>
-                    :
-                    edit
-                        ?
-                        <input value={todo.item}
-                            onChange={handleChange}
-                            autoFocus={true}
-                        />
-                        :
-                        <p  >{todo.item}</p>
+                {todo.isComplete && <p style={{ textDecoration: "line-through" }}>{todo.item}</p>}
+                {(!todo.isComplete && edit) &&
+                    <input value={item}
+                        onChange={handleChange}
+                        autoFocus={true}
+                    />
                 }
+                {(!todo.isComplete && !edit) && <p  >{todo.item}</p>}
+
+
             </div>
 
             <button className="buttons" disabled={todo.isComplete} style={{ backgroundColor: todo.isComplete ? "grey" : "#4285f4" }} onClick={handleEdit}>{edit ? <i className="fas fa-check"></i> : <i className="fas fa-pencil-alt"></i>}</button>
