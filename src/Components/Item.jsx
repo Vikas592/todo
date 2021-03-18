@@ -18,6 +18,7 @@ function Item({ todo }) {
   };
   const handleEdit = () => {
     setEdit(!edit);
+
     if (item && (item !== todo.item) && edit) {
       dispatch(editItem(
         { id: todo.id, item },
@@ -34,6 +35,7 @@ function Item({ todo }) {
         {todo.isComplete ? <i className="fas fa-check" style={{ color: '#4285F4' }} />
           : <i className="fas fa-notes-medical" style={{ color: '#4285F4' }} />}
         {todo.isComplete
+<<<<<<< HEAD
           && <p style={{ textDecoration: 'line-through' }}>{todo.item}</p>}
         {!todo.isComplete
           && edit
@@ -48,6 +50,22 @@ function Item({ todo }) {
         {!todo.isComplete
           && !edit
           && <p>{todo.item}</p>}
+=======
+                    && <p style={{ textDecoration: 'line-through' }}>{todo.item}</p>}
+        {!todo.isComplete
+          && edit
+          && (
+            <input
+              value={item}
+              onChange={handleChange}
+              autoFocus
+            />
+          )}
+
+        {!todo.isComplete
+          && !edit
+          && <p>{todo.item}</p>}
+>>>>>>> 71adf75c7f6026ed28c894271ebf95b495383cdb
 
       </div>
 
