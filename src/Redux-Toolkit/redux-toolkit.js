@@ -2,7 +2,7 @@ import { createSlice, configureStore } from '@reduxjs/toolkit';
 
 const initialState = [
     {
-        id: 1,
+        id: Date() + "Task 1",
         item: "Task 1",
         isComplete: false,
     },

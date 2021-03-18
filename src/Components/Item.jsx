@@ -15,7 +15,7 @@ function Item({ todo }) {
     }
     const handleEdit = () => {
         setEdit(!edit)
-        if (item) {
+        if (item && edit) {
             dispatch(editItem(
                 { id: todo.id, item }
             ))
