@@ -1,24 +1,24 @@
-import React, { useState } from 'react'
-import './Input.css'
+import React, { useState } from 'react';
+import './Input.css';
 
 function Input({ setTodos }) {
 
-    const [newItem, setNewItem] = useState("")
+    const [newItem, setNewItem] = useState("");
 
     const handleChange = (event) => {
-        setNewItem(event.target.value)
-    }
+        setNewItem(event.target.value);
+    };
     const handleSubmit = (event) => {
         event.preventDefault();
         if (newItem !== "") {
-            setTodos((prevTodos) => [...prevTodos, {
+            setTodos((prevTodos) => prevTodos, {
                 id: Date(),
                 item: newItem,
                 isComplete: false
-            }]);
-            setNewItem("")
+            });
+            setNewItem("");
         }
-    }
+    };
     return (
         <form>
             <input type="text" placeholder="To Do" value={newItem} onChange={handleChange} />
@@ -27,7 +27,7 @@ function Input({ setTodos }) {
                 <i className="fas fa-plus"></i>
             </button>
         </form>
-    )
+    );
 }
 
-export default Input
+export default Input;

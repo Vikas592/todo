@@ -1,42 +1,42 @@
-import React, { useState } from 'react'
-import "./Item.css"
+import React, { useState } from 'react';
+import "./Item.css";
 
 
 function Item({ todo, setTodos }) {
 
-    const [edit, setEdit] = useState(false)
+    const [edit, setEdit] = useState(false);
     const [item, setItem] = useState(todo.item);
 
     const handleDelete = () => {
         if (!todo.isComplete) {
-            setEdit(false)
+            setEdit(false);
         }
         setTodos((prevTodos) => [...prevTodos.map(todoItem => {
             if (todoItem.id === todo.id)
                 return {
                     id: todo.id,
                     item: todo.item,
-                    isComplete: todo.isComplete ? false : true
-                }
+                    isComplete: !todo.isComplete
+                };
             return todoItem;
-        })])
+        })]);
 
-    }
+    };
     const handleEdit = () => {
-        setEdit(!edit)
+        setEdit(!edit);
         if (item) {
-            setTodos((prevTodos) => [...prevTodos.map(todoItem => {
+            setTodos((prevTodos) => prevTodos.map(todoItem => {
                 if (todoItem.id === todo.id) todoItem.item = item;
-                return todoItem
-            })]);
+                return todoItem;
+            }));
         }
         else setItem(todo.item);
 
-    }
+    };
 
     const handleChange = (event) => {
         setItem(event.target.value);
-    }
+    };
     return (
         <div className="todoItem">
             <div className="todo-text" >
@@ -86,7 +86,7 @@ function Item({ todo, setTodos }) {
                 }
             </button>
         </div>
-    )
+    );
 }
 
-export default Item
+export default Item;
